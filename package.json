@@ -1,0 +1,28 @@
+{
+  "name": "@sebastian_boehler/philipshue",
+  "version": "1.0.0",
+  "description": "Wrapper around the PhilipsHue REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [
+    "philips",
+    "hue",
+    "light",
+    "bulb",
+    "bridge",
+    "api",
+    "node",
+    "typescript",
+    "remote",
+    "wrapper"
+  ],
+  "author": "Sebastian Boehler",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
+  }
+}
