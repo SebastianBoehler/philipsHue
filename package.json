@@ -1,6 +1,6 @@
 {
   "name": "@sebastianboehler/philipshue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wrapper around the PhilipsHue REST API",
   "main": "index.js",
   "scripts": {

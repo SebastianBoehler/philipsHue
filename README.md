@@ -2,6 +2,12 @@
 
 This is a Typescript package that provides a simple and easy-to-use wrapper around the Philips Hue API. It allows you to control your Philips Hue lights and other devices from your code.
 
+## Installation
+
+```
+npm install @sebastianboehler/philipshue --registry=https://npm.pkg.github.com/
+```
+
 ## Usage
 
 To use the package, import it in your code and create a new instance of the PhilipsHue class:
