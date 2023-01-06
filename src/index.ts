@@ -1,4 +1,4 @@
-import { Config, GroupedLightV2, HueError, LightStateV1, Scene, Smart_scene } from './types'
+import { Config, Group, GroupedLightV2, HueError, LightStateV1, LightV2, Scene, Smart_scene } from './types'
 
 export default class philipsHue {
   private redirect_uri: string
@@ -153,6 +153,56 @@ export default class philipsHue {
     return {
       success: false,
       data: await response.json(),
+    }
+  }
+
+  public async getGroups() {
+    const resp = await fetch(`https://api.meethue.com/route/api/${this.username}/groups`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${this.access_token}`,
+      }
+    })
+
+    const json: {[id: string]: Group} = await resp.json()
+
+    if (resp.status === 200) {
+      return {
+        success: true,
+        data: json,
+      }
+    }
+
+    return {
+      success: false,
+      errors: json,
+    }
+  }
+
+  public async getLightsV2() {
+    const resp = await fetch(`https://api.meethue.com/route/clip/v2/resource/light`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${this.access_token}`,
+        'hue-application-key': this.username!,
+      }
+    })
+
+    const json: {
+      errors: HueError[],
+      data: LightV2[]
+    } = await resp.json()
+
+    if (resp.status === 200) {
+      return {
+        success: true,
+        data: json.data,
+      }
+    }
+
+    return {
+      success: false,
+      errors: json.errors,
     }
   }
 

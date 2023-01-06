@@ -35,6 +35,7 @@ app.get(redirect_path, async (req, res) => {
     return
   }
   const success = await myPhilips.getAccessToken(code.toString())
+  if (success) = await myPhilips.createWhitelistUser()
   res.json({
     success
   })
@@ -59,6 +60,8 @@ app.listen(port, () => {
 - `setLightState(id: string | number, state: LightStateV1)` lets you change the states of your light, turn them on/off, change color etc.
 - `shouldRefreshAccessToken(aboutToExpireInNextSeconds: number = 90)` returns true if your access token is about to expire in next x seconds
 - `setGroupState(id: string | number, state: LightStateV1 | {scene: string})` let you control whole groups in your home
+- `getGroups()` returns all groups in your home
+- `getLightsV2()` returns all lights in your home
 - `getGroupsV2()` returns all groups in your home
 - `getScenesV2()` returns all scenes
 - `getSceneDetailsV2()` get a scene by its id
