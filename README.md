@@ -5,7 +5,7 @@ This is a Typescript package that provides a simple and easy-to-use wrapper arou
 ## Installation
 
 ```
-npm install @sebastianboehler/philipshue --registry=https://npm.pkg.github.com/
+npm install @sebastianboehler/philipshue@latest
 ```
 
 ## Usage
