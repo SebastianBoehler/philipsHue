@@ -132,6 +132,45 @@ class philipsHue {
             data: await response.json(),
         };
     }
+    async getGroups() {
+        const resp = await fetch(`https://api.meethue.com/route/api/${this.username}/groups`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${this.access_token}`,
+            }
+        });
+        const json = await resp.json();
+        if (resp.status === 200) {
+            return {
+                success: true,
+                data: json,
+            };
+        }
+        return {
+            success: false,
+            errors: json,
+        };
+    }
+    async getLightsV2() {
+        const resp = await fetch(`https://api.meethue.com/route/clip/v2/resource/light`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${this.access_token}`,
+                'hue-application-key': this.username,
+            }
+        });
+        const json = await resp.json();
+        if (resp.status === 200) {
+            return {
+                success: true,
+                data: json.data,
+            };
+        }
+        return {
+            success: false,
+            errors: json.errors,
+        };
+    }
     async getGroupsV2() {
         const resp = await fetch(`https://api.meethue.com/route/clip/v2/resource/grouped_light`, {
             method: 'GET',

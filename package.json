@@ -1,6 +1,6 @@
 {
-  "name": "@sebastianboehler/philipshue",
-  "version": "1.0.3",
+  "name": "@sebastian.boehler/philipshue",
+  "version": "1.0.5",
   "description": "Wrapper around the PhilipsHue REST API",
   "main": "index.js",
   "scripts": {
@@ -10,15 +10,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/SebastianBoehler/philipsHue.git"
-  },
-  "exports": {
-    ".": {
-      "import": "./lib/index.js",
-      "require": "./lib/index.js"
-    }
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [
     "philips",
