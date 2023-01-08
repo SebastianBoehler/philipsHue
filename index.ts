@@ -147,13 +147,13 @@ export default class philipsHue {
       return {
         success: true,
         data,
-      }
+      } as {success: true, data: {success: {[key: string]: string | boolean | number}}[]}
     }
 
     return {
       success: false,
       data: await response.json(),
-    }
+    } as {success: false, data: {error: {type: number, address: string, description: string}}[]}
   }
 
   public async getGroups() {
@@ -164,19 +164,19 @@ export default class philipsHue {
       }
     })
 
-    const json: {[id: string]: Group} = await resp.json()
+    const json: {[id: string]: Group} | {[id: string]: HueError} = await resp.json()
 
     if (resp.status === 200) {
       return {
         success: true,
         data: json,
-      }
+      } as {success: true, data: {[id: string]: Group}}
     }
 
     return {
       success: false,
       errors: json,
-    }
+    } as {success: false, errors: {[id: string]: HueError}}
   }
 
   public async getLightsV2() {
@@ -197,13 +197,13 @@ export default class philipsHue {
       return {
         success: true,
         data: json.data,
-      }
+      } as {success: true, data: LightV2[]}
     }
 
     return {
       success: false,
       errors: json.errors,
-    }
+    } as {success: false, errors: HueError[]}
   }
 
   public async getGroupsV2() {
@@ -224,13 +224,13 @@ export default class philipsHue {
       return {
         success: true,
         data: json.data,
-      }
+      } as {success: true, data: GroupedLightV2[]}
     }
 
     return {
       success: false,
       errors: json.errors,
-    }
+    } as {success: false, errors: HueError[]}
   }
 
   public async getScenesV2() {
@@ -251,13 +251,13 @@ export default class philipsHue {
       return {
         success: true,
         data: json.data,
-      }
+      } as {success: true, data: Scene[]}
     }
 
     return {
       success: false,
       errors: json.errors,
-    }
+    } as {success: false, errors: HueError[]}
   }
 
   public async getSceneDetailsV2(id: string | number) {
@@ -278,13 +278,13 @@ export default class philipsHue {
       return {
         success: true,
         data: json.data,
-      }
+      } as {success: true, data: Scene}
     }
 
     return {
       success: false,
       errors: json.errors,
-    }
+    } as {success: false, errors: HueError[]}
   }
 
   public async getSmartScenesV2() {
@@ -305,13 +305,13 @@ export default class philipsHue {
       return {
         success: true,
         data: json.data,
-      }
+      } as {success: true, data: Smart_scene[]}
     }
 
     return {
       success: false,
       errors: json.errors,
-    }
+    } as {success: false, errors: HueError[]}
   }
 
   public async activateSceneV2(id: string) {
@@ -340,13 +340,13 @@ export default class philipsHue {
       return {
         success: true,
         data: json.data,
-      }
+      } as {success: true, data: {rid: string, rtype: string}[]}
     }
 
     return {
       success: false,
       errors: json.errors,
-    }
+    } as {success: false, errors: HueError[]}
   }
 
   public async activateSmartSceneV2(id: string) {
@@ -374,12 +374,12 @@ export default class philipsHue {
       return {
         success: true,
         data: json.data,
-      }
+      } as {success: true, data: {rid: string, rtype: string}[]}
     }
 
     return {
       success: false,
       errors: json.errors,
-    }
+    } as {success: false, errors: HueError[]}
   }
 }
